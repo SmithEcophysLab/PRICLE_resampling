@@ -24,28 +24,33 @@ cover_sum$plotfac = as.factor(cover_sum$plot)
 
 ## fit mixed effects models
 ### Diversity
-D_lmer = lmer(log10(D) ~ precipitationfac * nitrogenfac * yearfac + (1|blockfac) + (1|blockfac : precipitationfac) + (1|blockfac : nitrogenfac) + (1|plotfac), data = diversity)
+D_lmer = lmer(log10(D) ~ precipitationfac * nitrogenfac * yearfac + (1|blockfac) + (1|plotfac), data = diversity)
 
 ### Evenness
-E_lmer = lmer(log10(E) ~ precipitationfac * nitrogenfac * yearfac + (1|blockfac) + (1|blockfac : precipitationfac) + (1|blockfac : nitrogenfac) + (1|plotfac), data = diversity)
+E_lmer = lmer(log10(E) ~ precipitationfac * nitrogenfac * yearfac + (1|blockfac) + (1|plotfac), data = diversity)
 
 ### Richness
-R_lmer = lmer(log10(R) ~ precipitationfac * nitrogenfac * yearfac + (1|blockfac) + (1|blockfac : precipitationfac) + (1|blockfac : nitrogenfac) + (1|plotfac), data = diversity)
+R_lmer = lmer(log10(R) ~ precipitationfac * nitrogenfac * yearfac + (1|blockfac) + (1|plotfac), data = diversity)
 
 ### Clonal forbs
-cf_lmer = lmer(log10(Sum + 1) ~ precipitationfac * nitrogenfac * yearfac + (1|blockfac) + (1|blockfac : precipitationfac) + (1|blockfac : nitrogenfac) + (1|plotfac), data = subset(cover_sum, pft == 'cf'))
+cf_lmer = lmer(log10(Sum + 1) ~ precipitationfac * nitrogenfac * yearfac + (1|blockfac) + (1|plotfac), 
+               data = subset(cover_sum, pft == 'cf'))
 
 ### C4 grasses
-c4g_lmer = lmer(log10(Sum + 1) ~ precipitationfac * nitrogenfac * yearfac + (1|blockfac) + (1|blockfac : precipitationfac) + (1|blockfac : nitrogenfac) + (1|plotfac), data = subset(cover_sum, pft == 'c4g'))
+c4g_lmer = lmer(log10(Sum + 1) ~ precipitationfac * nitrogenfac * yearfac + (1|blockfac) + (1|plotfac), 
+                data = subset(cover_sum, pft == 'c4g'))
 
 ### Nitrogen fixers
-nf_lmer = lmer(log10(Sum + 1) ~ precipitationfac * nitrogenfac * yearfac + (1|blockfac) + (1|blockfac : precipitationfac) + (1|blockfac : nitrogenfac) + (1|plotfac), data = subset(cover_sum, pft == 'nf'))
+nf_lmer = lmer(log10(Sum + 1) ~ precipitationfac * nitrogenfac * yearfac + (1|blockfac) + (1|plotfac), 
+               data = subset(cover_sum, pft == 'nf'))
 
 ### Other forbs
-of_lmer = lmer(log10(Sum + 1) ~ precipitationfac * nitrogenfac * yearfac + (1|blockfac) + (1|blockfac : precipitationfac) + (1|blockfac : nitrogenfac) + (1|plotfac), data = subset(cover_sum, pft == 'of'))
+of_lmer = lmer(log10(Sum + 1) ~ precipitationfac * nitrogenfac * yearfac + (1|blockfac) + (1|plotfac), 
+               data = subset(cover_sum, pft == 'of'))
 
 ### C3 grasses
-c3g_lmer = lmer(log10(Sum + 1) ~ precipitationfac * nitrogenfac * yearfac + (1|blockfac) + (1|blockfac : precipitationfac) + (1|blockfac : nitrogenfac) + (1|plotfac), data = subset(cover_sum, pft == 'c3g'))
+c3g_lmer = lmer(log10(Sum + 1) ~ precipitationfac * nitrogenfac * yearfac + (1|blockfac) + (1|plotfac), 
+                data = subset(cover_sum, pft == 'c3g'))
 
 
 ## examine output
@@ -58,6 +63,7 @@ cld(lsmeans(D_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2012')
 cld(lsmeans(D_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2013'))) 
 cld(lsmeans(D_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2014'))) 
 cld(lsmeans(D_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2018')))
+cld(lsmeans(D_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2019')))
 
 ### Evenness
 Anova(E_lmer)
@@ -68,6 +74,7 @@ cld(lsmeans(E_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2012')
 cld(lsmeans(E_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2013'))) 
 cld(lsmeans(E_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2014'))) 
 cld(lsmeans(E_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2018')))
+cld(lsmeans(E_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2019')))
 
 ### Richness
 Anova(R_lmer)
@@ -78,6 +85,7 @@ cld(lsmeans(R_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2012')
 cld(lsmeans(R_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2013'))) 
 cld(lsmeans(R_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2014'))) 
 cld(lsmeans(R_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2018')))
+cld(lsmeans(R_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2019')))
 
 ### Clonal Forb Cover
 Anova(cf_lmer)
@@ -88,6 +96,7 @@ cld(lsmeans(cf_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2012'
 cld(lsmeans(cf_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2013'))) 
 cld(lsmeans(cf_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2014'))) 
 cld(lsmeans(cf_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2018')))
+cld(lsmeans(cf_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2019')))
 
 ### C4 Grass Cover
 Anova(c4g_lmer)
@@ -98,6 +107,7 @@ cld(lsmeans(c4g_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2012
 cld(lsmeans(c4g_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2013'))) 
 cld(lsmeans(c4g_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2014'))) 
 cld(lsmeans(c4g_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2018')))
+cld(lsmeans(c4g_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2019')))
 
 ### Nitrogen Fixer Cover
 Anova(nf_lmer)
@@ -108,6 +118,7 @@ cld(lsmeans(nf_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2012'
 cld(lsmeans(nf_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2013'))) 
 cld(lsmeans(nf_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2014'))) 
 cld(lsmeans(nf_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2018')))
+cld(lsmeans(nf_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2019')))
 
 ### Other Forb Cover
 Anova(of_lmer)
@@ -118,6 +129,7 @@ cld(lsmeans(of_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2012'
 cld(lsmeans(of_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2013'))) 
 cld(lsmeans(of_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2014'))) 
 cld(lsmeans(of_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2018')))
+cld(lsmeans(of_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2019')))
 
 ### C3 Grass Cover
 Anova(c3g_lmer)
@@ -128,6 +140,7 @@ cld(lsmeans(c3g_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2012
 cld(lsmeans(c3g_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2013'))) 
 cld(lsmeans(c3g_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2014'))) 
 cld(lsmeans(c3g_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2018')))
+cld(lsmeans(c3g_lmer, ~precipitationfac * nitrogenfac, at = list(yearfac = '2019')))
 
 
 
