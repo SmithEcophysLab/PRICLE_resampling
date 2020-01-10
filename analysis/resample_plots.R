@@ -40,8 +40,8 @@ cover_sum$treatment[cover_sum$precipitationfac == '1' & cover_sum$nitrogenfac ==
 d_plot = ggplot(data = diversity, aes(y = D, x = treatment, fill = treatment)) +
   theme(legend.position = 'none',
         legend.title = element_blank(),
-        axis.title.y=element_text(size=rel(2), colour = 'black'),
-        axis.title.x=element_text(size=rel(2), colour = 'black'),
+        axis.title.y=element_text(size=rel(3), colour = 'black'),
+        axis.title.x=element_text(size=rel(3), colour = 'black'),
         axis.text.x=element_text(size=rel(2), colour = 'black'),
         axis.text.y=element_text(size=rel(2), colour = 'black'),
         panel.background = element_rect(fill = 'white', colour = 'black'),
@@ -52,15 +52,15 @@ d_plot = ggplot(data = diversity, aes(y = D, x = treatment, fill = treatment)) +
   scale_fill_manual(values = c('white', 'red', 'blue', 'purple')) +
   ylim(c(0, 2)) +
   ylab('Diversity') +
-  xlab('') +
-  annotate('text', x = 1, y = c(2, 1.8, 1.6), 
-           label = c('N (ns)', 'VR (ns)', 'N x VR (ns)'))
+  xlab('') #+
+  # annotate('text', x = 1, y = c(2, 1.8, 1.6), 
+  #          label = c('N (ns)', 'VR (ns)', 'N x VR (ns)'))
 
 e_plot = ggplot(data = diversity, aes(y = E, x = treatment, fill = treatment)) +
   theme(legend.position = 'none',
         legend.title = element_blank(),
-        axis.title.y=element_text(size=rel(2), colour = 'black'),
-        axis.title.x=element_text(size=rel(2), colour = 'black'),
+        axis.title.y=element_text(size=rel(3), colour = 'black'),
+        axis.title.x=element_text(size=rel(3), colour = 'black'),
         axis.text.x=element_text(size=rel(2), colour = 'black'),
         axis.text.y=element_text(size=rel(2), colour = 'black'),
         panel.background = element_rect(fill = 'white', colour = 'black'),
@@ -71,15 +71,15 @@ e_plot = ggplot(data = diversity, aes(y = E, x = treatment, fill = treatment)) +
   scale_fill_manual(values = c('white', 'red', 'blue', 'purple')) +
   ylim(c(0, 0.5)) +
   ylab('Evenness') +
-  xlab('') +
-  annotate('text', x = 1, y = c(2/4, 1.8/4, 1.6/4), 
-           label = c('N†', 'VR (ns)', 'N x VR (ns)'))
+  xlab('') #+
+  # annotate('text', x = 1, y = c(2/4, 1.8/4, 1.6/4), 
+  #          label = c('N†', 'VR (ns)', 'N x VR (ns)'))
 
 r_plot = ggplot(data = diversity, aes(y = R, x = treatment, fill = treatment)) +
   theme(legend.position = 'none',
         legend.title = element_blank(),
-        axis.title.y=element_text(size=rel(2), colour = 'black'),
-        axis.title.x=element_text(size=rel(2), colour = 'black'),
+        axis.title.y=element_text(size=rel(3), colour = 'black'),
+        axis.title.x=element_text(size=rel(3), colour = 'black'),
         axis.text.x=element_text(size=rel(2), colour = 'black'),
         axis.text.y=element_text(size=rel(2), colour = 'black'),
         panel.background = element_rect(fill = 'white', colour = 'black'),
@@ -90,9 +90,9 @@ r_plot = ggplot(data = diversity, aes(y = R, x = treatment, fill = treatment)) +
   scale_fill_manual(values = c('white', 'red', 'blue', 'purple')) +
   ylim(c(0, 16)) +
   ylab('Richness') +
-  xlab('') +
-  annotate('text', x = 1, y = c(2*8, 1.8*8, 1.6*8), 
-           label = c('N†', 'VR (ns)', 'N x VR (ns)'))
+  xlab('Historical Treatment') #+
+  # annotate('text', x = 1, y = c(2*8, 1.8*8, 1.6*8), 
+  #          label = c('N†', 'VR (ns)', 'N x VR (ns)'))
 
 d_plot_g = ggplotGrob(d_plot)
 e_plot_g = ggplotGrob(e_plot)
@@ -104,3 +104,69 @@ grid.newpage()
 grid.draw(diversity_plots)
 
 ### plant type figure
+cf_plot = ggplot(data = subset(cover_sum, pft == 'cf'), aes(y = Sum, x = treatment, fill = treatment)) +
+  theme(legend.position = 'none',
+        legend.title = element_blank(),
+        axis.title.y=element_text(size=rel(2.6), colour = 'black'),
+        axis.title.x=element_text(size=rel(2.6), colour = 'black'),
+        axis.text.x=element_text(size=rel(2), colour = 'black'),
+        axis.text.y=element_text(size=rel(2), colour = 'black'),
+        panel.background = element_rect(fill = 'white', colour = 'black'),
+        panel.grid.major = element_line(colour = "white"),
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black")) +
+  geom_boxplot(position = 'dodge', colour = 'black') +
+  scale_fill_manual(values = c('white', 'red', 'blue', 'purple')) +
+  ylim(c(80, 100)) +
+  ylab('CF cover (%)') +
+  xlab('') #+
+# annotate('text', x = 1, y = c(2, 1.8, 1.6), 
+#          label = c('N (ns)', 'VR (ns)', 'N x VR (ns)'))
+
+c4g_plot = ggplot(data = subset(cover_sum, pft == 'c4g'), aes(y = Sum, x = treatment, fill = treatment)) +
+  theme(legend.position = 'none',
+        legend.title = element_blank(),
+        axis.title.y=element_text(size=rel(2.6), colour = 'black'),
+        axis.title.x=element_text(size=rel(2.6), colour = 'black'),
+        axis.text.x=element_text(size=rel(2), colour = 'black'),
+        axis.text.y=element_text(size=rel(2), colour = 'black'),
+        panel.background = element_rect(fill = 'white', colour = 'black'),
+        panel.grid.major = element_line(colour = "white"),
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black")) +
+  geom_boxplot(position = 'dodge', colour = 'black') +
+  scale_fill_manual(values = c('white', 'red', 'blue', 'purple')) +
+  ylim(c(0, 60)) +
+  ylab('C4G cover (%)') +
+  xlab('') #+
+# annotate('text', x = 1, y = c(2, 1.8, 1.6), 
+#          label = c('N (ns)', 'VR (ns)', 'N x VR (ns)'))
+
+nf_plot = ggplot(data = subset(cover_sum, pft == 'nf'), aes(y = Sum, x = treatment, fill = treatment)) +
+  theme(legend.position = 'none',
+        legend.title = element_blank(),
+        axis.title.y=element_text(size=rel(2.6), colour = 'black'),
+        axis.title.x=element_text(size=rel(2.6), colour = 'black'),
+        axis.text.x=element_text(size=rel(2), colour = 'black'),
+        axis.text.y=element_text(size=rel(2), colour = 'black'),
+        panel.background = element_rect(fill = 'white', colour = 'black'),
+        panel.grid.major = element_line(colour = "white"),
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black")) +
+  geom_boxplot(position = 'dodge', colour = 'black') +
+  scale_fill_manual(values = c('white', 'red', 'blue', 'purple')) +
+  ylim(c(0, 40)) +
+  ylab('NF cover (%)') +
+  xlab('Historical Treatment') #+
+# annotate('text', x = 1, y = c(2, 1.8, 1.6), 
+#          label = c('N (ns)', 'VR (ns)', 'N x VR (ns)'))
+
+cf_plot_g = ggplotGrob(cf_plot)
+c4g_plot_g = ggplotGrob(c4g_plot)
+nf_plot_g = ggplotGrob(nf_plot)
+
+pft_plots = rbind(cf_plot_g, c4g_plot_g, nf_plot_g, size = 'last')
+pft_plots$widths = unit.pmax(cf_plot_g$widths, c4g_plot_g$widths, nf_plot_g$widths)
+grid.newpage()
+grid.draw(pft_plots)
+
