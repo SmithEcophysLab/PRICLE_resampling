@@ -65,11 +65,15 @@ cld(lsmeans(D_lmer, ~ precipitationfac * nitrogenfac), alpha = 0.1)
 Anova(E_lmer)
 cld(lsmeans(E_lmer, ~ precipitationfac * nitrogenfac))
 cld(lsmeans(E_lmer, ~ precipitationfac * nitrogenfac), alpha = 0.1)
+E_lsmeans_nitrogen = summary(lsmeans(E_lmer, ~nitrogenfac))
+(E_lsmeans_nitrogen[2, 2] - E_lsmeans_nitrogen[1, 2]) / abs(E_lsmeans_nitrogen[1, 2])
 
 ### Richness
 Anova(R_lmer)
 cld(lsmeans(R_lmer, ~ precipitationfac * nitrogenfac))
 cld(lsmeans(R_lmer, ~ precipitationfac * nitrogenfac), alpha = 0.1)
+R_lsmeans_nitrogen = summary(lsmeans(R_lmer, ~nitrogenfac))
+(R_lsmeans_nitrogen[2, 2] - R_lsmeans_nitrogen[1, 2]) / abs(R_lsmeans_nitrogen[1, 2])
 
 ### Clonal Forb Cover
 Anova(cf_lmer)
@@ -82,18 +86,26 @@ cld(lsmeans(c4g_lmer, ~ precipitationfac))
 cld(lsmeans(c4g_lmer, ~ nitrogenfac))
 cld(lsmeans(c4g_lmer, ~ precipitationfac * nitrogenfac))
 cld(lsmeans(c4g_lmer, ~ precipitationfac * nitrogenfac), alpha = 0.1)
+c4g_lsmeans_nitrogen = summary(lsmeans(c4g_lmer, ~nitrogenfac))
+(c4g_lsmeans_nitrogen[2, 2] - c4g_lsmeans_nitrogen[1, 2]) / abs(c4g_lsmeans_nitrogen[1, 2])
+c4g_lsmeans_precipitation = summary(lsmeans(c4g_lmer, ~precipitationfac))
+(c4g_lsmeans_precipitation[2, 2] - c4g_lsmeans_precipitation[1, 2]) / abs(c4g_lsmeans_precipitation[1, 2])
 
 ### Nitrogen Fixer Cover
 Anova(nf_lmer)
 cld(lsmeans(nf_lmer, ~ nitrogenfac))
 cld(lsmeans(nf_lmer, ~ precipitationfac * nitrogenfac))
 cld(lsmeans(nf_lmer, ~ precipitationfac * nitrogenfac), alpha = 0.1)
+nf_lsmeans_nitrogen = summary(lsmeans(nf_lmer, ~nitrogenfac))
+(nf_lsmeans_nitrogen[2, 2] - nf_lsmeans_nitrogen[1, 2]) / abs(nf_lsmeans_nitrogen[1, 2])
 
 ### Other Forb Cover
 Anova(of_lmer)
 cld(lsmeans(of_lmer, ~ precipitationfac))
 cld(lsmeans(of_lmer, ~ precipitationfac * nitrogenfac))
 cld(lsmeans(of_lmer, ~ precipitationfac * nitrogenfac), alpha = 0.1)
+of_lsmeans_precipitation = summary(lsmeans(of_lmer, ~precipitationfac))
+(of_lsmeans_precipitation[2, 2] - of_lsmeans_precipitation[1, 2]) / abs(of_lsmeans_precipitation[1, 2])
 
 ### C3 Grass Cover
 Anova(c3g_lmer)
