@@ -96,13 +96,13 @@ d_plot = ggplot(data = subset(diversity, year > 2015),
         legend.background = element_blank(),
         legend.box.background = element_rect(colour = "black"),
         plot.tag = element_text(size = 30)) +
-  geom_boxplot(position = 'dodge', colour = 'black') +
+  geom_boxplot(position = 'dodge', colour = 'black', lwd = 1) +
   scale_fill_manual(values = c('white', 'red', 'blue', 'purple')) +
   ylim(c(0, 2)) +
   ylab('') +
   xlab('') +
-  annotate('text', x = 1.5, y = c(1.9, 1.8, 1.7), 
-           label = c('N (ns)', 'VR (ns)', 'N x VR (ns)')) +
+  annotate('text', x = 1.5, y = c(1.9, 1.75, 1.6), 
+           label = c('N (ns)', 'VR (ns)', 'N x VR (ns)'), size = 5) +
   labs(tag = "B")
 
 d_plot_time = ggplot(data = diversity_year_mean, 
@@ -140,13 +140,13 @@ e_plot = ggplot(data = subset(diversity, year > 2015),
         legend.background = element_blank(),
         legend.box.background = element_rect(colour = "black"),
         plot.tag = element_text(size = 30)) +
-  geom_boxplot(position = 'dodge', colour = 'black') +
+  geom_boxplot(position = 'dodge', colour = 'black', lwd = 1) +
   scale_fill_manual(values = c('white', 'red', 'blue', 'purple')) +
-  ylim(c(0, 0.5)) +
+  ylim(c(0, 0.6)) +
   ylab('') +
   xlab('') +
-  annotate('text', x = 1.5, y = c(1.9/4, 1.8/4, 1.7/4), 
-           label = c('N†', 'VR (ns)', 'N x VR (ns)')) +
+  annotate('text', x = 1.5, y = c(1.9/3.33, 1.75/3.33, 1.6/3.33), 
+           label = c('N†', 'VR (ns)', 'N x VR (ns)'), size = 5) +
   labs(tag = "D")
 
 e_plot_time = ggplot(data = diversity_year_mean, 
@@ -184,13 +184,13 @@ r_plot = ggplot(data = subset(diversity, year > 2015),
         legend.background = element_blank(),
         legend.box.background = element_rect(colour = "black"),
         plot.tag = element_text(size = 30)) +
-  geom_boxplot(position = 'dodge', colour = 'black') +
+  geom_boxplot(position = 'dodge', colour = 'black', lwd = 1) +
   scale_fill_manual(values = c('white', 'red', 'blue', 'purple')) +
   ylim(c(0, 15)) +
   ylab('') +
   xlab('Historical Treatment') +
-  annotate('text', x = 1.5, y = c(1.9*7.5, 1.8*7.5, 1.7*7.5), 
-           label = c('N†', 'VR (ns)', 'N x VR (ns)')) +
+  annotate('text', x = 1.5, y = c(1.9*7.5, 1.75*7.5, 1.6*7.5), 
+           label = c('N†', 'VR (ns)', 'N x VR (ns)'), size = 5) +
   labs(tag = "F")
 
 r_plot_time = ggplot(data = diversity_year_mean, 
@@ -234,13 +234,13 @@ cf_plot = ggplot(data = subset(cover_sum, pft == 'cf' & year > 2015),
         legend.background = element_blank(),
         legend.box.background = element_rect(colour = "black"),
         plot.tag = element_text(size = 30)) +
-  geom_boxplot(position = 'dodge', colour = 'black') +
+  geom_boxplot(position = 'dodge', colour = 'black', lwd = 1) +
   scale_fill_manual(values = c('white', 'red', 'blue', 'purple')) +
   ylim(c(0, 200)) +
   ylab('') +
   xlab('') +
-  annotate('text', x = 1.5, y = c(190, 180, 170), 
-           label = c('N (ns)', 'VR (ns)', 'N x VR (ns)')) +
+  annotate('text', x = 1.5, y = c(1.9*10, 1.75*10, 1.6*10), 
+           label = c('N (ns)', 'VR (ns)', 'N x VR (ns)'), size = 5) +
   labs(tag = "B")
 
 cf_plot_time = ggplot(data = subset(cover_sum_year_mean, pft == 'cf'), 
@@ -278,13 +278,13 @@ c4g_plot = ggplot(data = subset(cover_sum, pft == 'c4g' & year > 2015),
         legend.background = element_blank(),
         legend.box.background = element_rect(colour = "black"),
         plot.tag = element_text(size = 30)) +
-  geom_boxplot(position = 'dodge', colour = 'black') +
+  geom_boxplot(position = 'dodge', colour = 'black', lwd = 1) +
   scale_fill_manual(values = c('white', 'red', 'blue', 'purple')) +
   ylim(c(0, 60)) +
   ylab('') +
   xlab('') +
-  annotate('text', x = 1.5, y = c(1.9*30, 1.8*30, 1.7*30), 
-           label = c('N†', 'VR†', 'N x VR (ns)')) +
+  annotate('text', x = 1.5, y = c(1.9*30, 1.75*30, 1.6*30), 
+           label = c('N†', 'VR†', 'N x VR (ns)'), size = 5) +
     labs(tag = "D")
 
 c4g_plot_time = ggplot(data = subset(cover_sum_year_mean, pft == 'c4g'), 
@@ -322,13 +322,13 @@ nf_plot = ggplot(data = subset(cover_sum, pft == 'nf' & year > 2015),
         legend.background = element_blank(),
         legend.box.background = element_rect(colour = "black"),
         plot.tag = element_text(size = 30)) +
-  geom_boxplot(position = 'dodge', colour = 'black') +
+  geom_boxplot(position = 'dodge', colour = 'black', lwd = 1) +
   scale_fill_manual(values = c('white', 'red', 'blue', 'purple')) +
   ylim(c(0, 40)) +
   ylab('') +
   xlab('Historical Treatment') +
-  annotate('text', x = 1.5, y = c(1.9*20, 1.8*20, 1.7*20), 
-           label = c('N†', 'VR (ns)', 'N x VR (ns)')) +
+  annotate('text', x = 1.5, y = c(1.9*20, 1.75*20, 1.6*20), 
+           label = c('N†', 'VR (ns)', 'N x VR (ns)'), size = 5) +
     labs(tag = "F")
 
 nf_plot_time = ggplot(data = subset(cover_sum_year_mean, pft == 'nf'), 
