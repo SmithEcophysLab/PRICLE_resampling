@@ -239,7 +239,7 @@ cf_plot = ggplot(data = subset(cover_sum, pft == 'cf' & year > 2015),
   ylim(c(0, 200)) +
   ylab('') +
   xlab('') +
-  annotate('text', x = 1.5, y = c(1.9*10, 1.75*10, 1.6*10), 
+  annotate('text', x = 1.5, y = c(1.9*100, 1.75*100, 1.6*100), 
            label = c('N (ns)', 'VR (ns)', 'N x VR (ns)'), size = 5) +
   labs(tag = "B")
 
