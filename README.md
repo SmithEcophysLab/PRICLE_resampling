@@ -8,6 +8,7 @@ Climate Experiment (PRICLE)
 Nick Smith (nick.gregory.smith@gmail.com)
 
 ## DOI badge
+[![DOI](https://zenodo.org/badge/169658762.svg)](https://zenodo.org/badge/latestdoi/169658762)
 
 ## folder descriptions
 
